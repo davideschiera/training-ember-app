@@ -43,7 +43,7 @@ SampleApp.DashboardPanelComponent = Ember.Component.extend({
         },
 
         save: function() {
-            this.sendAction('save', this.get('stateProps.name'));
+            this.get('save')(this.get('stateProps.name'));
 
             this.set('stateProps', _.extend({}, this.stateProps, {
                 name:       null,

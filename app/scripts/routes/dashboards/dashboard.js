@@ -8,11 +8,5 @@ SampleApp.DashboardsDashboardRoute = Ember.Route.extend({
 
     setupController: function(controller, model) {
         this._super(controller, model);
-    },
-
-    actions: {
-        editName: function(name) {
-            this.controller.set('model.name', name);
-        }
     }
 });
