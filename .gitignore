@@ -1,0 +1,20 @@
+# Personal editor preferences
+# Feel free to add the editor preferences of your own editor or IDE if needed
+.brackets.json
+.idea
+
+# Folders
+/.tmp
+/app/bower_components
+/dist
+/node_modules
+
+# Files
+_*.bat
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+serve.js

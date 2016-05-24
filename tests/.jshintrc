@@ -1,0 +1,6 @@
+{
+    "extends":  "../.jshintrc",
+    "undef":    false,
+    "evil":     true,
+    "debug":    true
+}

@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Sample Ember App</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        @@componentsCss
+
+        <!-- build:css styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+    </head>
+    <body>
+        @@componentsJs
+
+        <!-- build:js(.tmp) scripts/templates.min.js -->
+        <script defer src="scripts/compiled-templates.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js(.tmp) scripts/main.min.js -->
+        <script defer src="scripts/combined-scripts.js"></script>
+        <script async src="@@livereload"></script>
+        <!-- endbuild -->
+
+        <!-- proxima-nova fonts package -->
+        <script src="//use.typekit.net/cmf7jti.js"></script>
+        <script>try{Typekit.load();}catch(e){}</script>
+        <!-- end proxima-nova fonts package -->
+    </body>
+</html>

@@ -1,0 +1,24 @@
+# EditorConfig helps developers define and maintain consistent
+# coding styles between different editors and IDEs
+# editorconfig.org
+
+root = true
+
+[*]
+charset = utf-8
+
+# Unix-style newlines with a newline ending every file
+end_of_line = lf
+insert_final_newline = true
+
+# 4 space indentation
+indent_style = space
+indent_size = 4
+
+# Trim trailing whitespaces
+trim_trailing_whitespace = true
+
+
+# Don't trim trailing whitespaces on MarkDown documents
+[*.md]
+trim_trailing_whitespace = false

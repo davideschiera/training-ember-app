@@ -1,0 +1,1 @@
+require('scripts/routes/router');
