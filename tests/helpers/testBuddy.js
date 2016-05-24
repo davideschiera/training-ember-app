@@ -131,8 +131,8 @@
                     //
                     applicationRouteBackup = SampleApp.ApplicationRoute;
                     SampleApp.ApplicationRoute = Ember.Route.extend({
-                        setupController: function(controller) {
-                            controller.set('model', model);
+                        model: function() {
+                            return model;
                         },
                         actions: actions
                     });
