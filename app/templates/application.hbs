@@ -1,1 +1,139 @@
-<h1>Welcome!</h1>
+<div class="app-container">
+    <header class="header-container shadow-z-1">
+        <nav class="menu -mainmenu">
+            <a class="logo" href="#"><img onerror=
+            "this.src='images/Logo_SC_White.png'" src=
+            "images/Logo_SC_White.svg"></a>
+            <ul class="section navigator">
+                <li class="">
+                    <a class="button -menu" href=
+                    "#/overview">Overview<span class=
+                    "beta-badge">BETA</span></a>
+                </li>
+                <li class="">
+                    <a class="button -menu" data-action="explore" href=
+                    "#/explore">Explore</a>
+                </li>
+                <li class="">
+                    <a class="button -menu" data-action="dashboards" href=
+                    "#/dashboards">Dashboards</a>
+                </li>
+                <li class="">
+                    <a class="button -menu active" data-action="events" href=
+                    "#/alerting">Events</a>
+                </li>
+                <li class="-active">
+                    <a class="button -menu active" data-action="alerts" href=
+                    "#/alerting/alerts">Alerts</a>
+                </li>
+                <li class="">
+                    <a class="button -menu" data-action="sysdig" href=
+                    "#/sysdig">Sysdig</a>
+                </li>
+            </ul>
+            <ul class="section actions">
+                <li>
+                    <a class="button -menu" href=
+                    "#/settings"><small>support</small></a>
+                </li>
+                <li><span class="sdc-tooltip"><a class="button -menu" href=
+                "#/settings/subscription"><span class=
+                "agent-usage-badge"><svg class="levels" data-step="0" viewbox=
+                "0 0 15 15" x="0px" y="0px">
+                <rect class="lv4" height="3" rx="0.8" ry="0.8" width="15" x="0"
+                y="00"></rect>
+                <rect class="lv3" height="3" rx="0.8" ry="0.8" width="15" x="0"
+                y="04"></rect>
+                <rect class="lv2" height="3" rx="0.8" ry="0.8" width="15" x="0"
+                y="08"></rect>
+                <rect class="lv1" height="3" rx="0.8" ry="0.8" width="15" x="0"
+                y="12"></rect>
+                <g class="exclamation-mark">
+                    <rect class height="3" rx="0.8" ry="0.8" width="3" x="12"
+                    y="12"></rect>
+                    <rect class height="10" rx="0.8" ry="0.8" width="3" x="12"
+                    y="0"></rect>
+                </g></svg></span></a></span></li>
+                <li class=""><span class="sdc-tooltip"><a class="button -menu"
+                href="#/settings"><i class=
+                "material-icons">settings</i></a></span></li>
+                <li data-context="header-help"><span class=
+                "sdc-tooltip"><button class="sdc-dropdown button -menu"
+                data-action="show-help-dropdown" type="button"><span class=
+                "sdc-tooltip"><i class=
+                "material-icons">help</i></span></button></span></li>
+                <li><span class="sdc-tooltip"><a class="button -menu"
+                data-ember-action="11" href="#"><i class=
+                "material-icons">exit_to_app</i></a></span></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="page-content">
+        <section class="box-container -onebig -fixedheight" data-eq-pts="a:0">
+            <div class="box-body">
+                <div class="box-content -nopaddingbottom">
+                    <header class="box-header" data-eq-pts=
+                    "small: 0, medium: 900, large: 1200">
+                        <div class="titlebox">
+                            <h1 class="title">Configure Alerts</h1>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="actions">
+                            <button class="button -flat -inline"
+                            data-ember-action="163">Select All</button>
+                            <a class="button -flat -inline" href=
+                            "#/alerting/alerts/new">Add Alert</a>
+                            <div class="filter-bar -in-header">
+                                <div class="icon">
+                                    <i class="material-icons">search</i>
+                                </div><input class="ember-text-field field"
+                                data-action="filter" placeholder="Search" type=
+                                "text"> <button class="clear -hidden"
+                                data-ember-action="165"><i class=
+                                "material-icons">clear</i></button>
+                            </div><span class="sdc-tooltip"><button class=
+                            "sdc-popover button -flat -big -icon -inline"
+                            data-action=
+                            "toggle-configuration-form"><span class="sdc-tooltip"><i class="material-icons">settings</i></span></button></span>
+                        </div>
+                    </header>
+                    <table class="table">
+                        <thead>
+                            <td>#</td>
+                            <td>Name</td>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Test</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="box-footer">
+                <div class="right">
+                    <button class="button -flat" data-action="remove"
+                    data-ember-action="201" disabled="disabled">Delete</button>
+                    <button class="button -flat" data-action="explore"
+                    data-ember-action="203" disabled=
+                    "disabled">Explore</button> <button class="button -flat"
+                    data-action="copy" data-ember-action="205" disabled=
+                    "disabled">Copy</button> <a class=
+                    "button -raised -primary -disabled loading" data-action=
+                    "edit" href="#">Edit</a>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="notification-box hidden">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <span class="glyphicon glyphicon-remove pull-right"
+                data-ember-action="14"></span> <button class=
+                "btn btn-link-label" data-ember-action="15" type="button">Undo
+                last manual grouping change</button>
+            </div>
+        </div>
+    </div>
+</div>
