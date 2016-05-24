@@ -1,11 +1,13 @@
 SampleApp = Ember.Application.create({
     LOG_TRANSITIONS: true,
-    // LOG_TRANSITIONS_INTERNAL: true,
+    LOG_TRANSITIONS_INTERNAL: true,
     // LOG_ACTIVE_GENERATION: true,
     // LOG_VIEW_LOOKUPS: true
 });
 
 SampleApp.DS = Ember.Namespace.create();
+
+require('scripts/components/*');
 
 require('scripts/routes/init');
 

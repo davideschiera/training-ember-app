@@ -1,0 +1,8 @@
+<h2>{{dashboardId}} - {{name}}</h2>
+<strong>Is loading: {{stateProps.loading}}</strong>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a tortor ut mi tincidunt euismod ut id augue. Quisque posuere diam scelerisque mi tincidunt aliquet.</p>
+
+{{#unless stateProps.loading}}
+    {{dashboard-data-panel data=stateProps.data}}
+{{/unless}}
