@@ -7,8 +7,4 @@
         }
     });
 
-    TestBuddy.test('Sample', function() {
-        ok(false);
-    });
-
 })();
