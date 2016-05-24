@@ -13,7 +13,7 @@ SampleApp.DashboardPanelComponent = Ember.Component.extend({
     },
 
     loadData: function() {
-        setTimeout(processData.bind(this), 2000);
+        Ember.run.later(this, processData, 2000);
 
         function processData() {
             Ember.run(this, function() {
