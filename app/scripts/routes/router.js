@@ -2,7 +2,7 @@ require('scripts/routes/dashboards');
 
 SampleApp.Router.map(function() {
     this.resource('dashboards', { path: 'dashboards' }, function() {
-        this.route('dashboard', { path: 'dashboard' });
+        this.route('dashboard', { path: ':id' });
     });
 
     //

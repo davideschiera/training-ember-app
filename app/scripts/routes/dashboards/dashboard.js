@@ -1,6 +1,7 @@
 SampleApp.DashboardsDashboardRoute = Ember.Route.extend({
-    model: function() {
+    model: function(param) {
         return {
+            id: param.id,
             name: 'My Dashboard'
         };
     },
