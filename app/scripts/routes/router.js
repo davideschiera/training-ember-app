@@ -1,7 +1,9 @@
 require('scripts/routes/dashboards');
 
 SampleApp.Router.map(function() {
-    this.route('dashboards', { path: 'dashboards' });
+    this.resource('dashboards', { path: 'dashboards' }, function() {
+        this.route('dashboard', { path: 'dashboard' });
+    });
 
     //
     // Template file location: [foo/bar.hbs]
