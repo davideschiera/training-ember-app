@@ -4,7 +4,9 @@ SampleApp.DashboardPanelComponent = Ember.Component.extend({
 
         this.stateProps = {
             loading:    true,
-            data:       null
+            data:       null,
+            name:       null,
+            editing:    false
         };
 
         this.loadData();
@@ -15,9 +17,38 @@ SampleApp.DashboardPanelComponent = Ember.Component.extend({
 
         function processData() {
             Ember.run(this, function() {
-                this.set('stateProps.loading', false);
-                this.set('stateProps.data', 'Lorem ipsum dolor sit amet.');
+                this.set('stateProps', _.extend({}, this.stateProps, {
+                    loading:    false,
+                    data:       'Lorem ipsum dolor sit amet.'
+                }));
             });
+        }
+    },
+
+    actions: {
+        dataReload: function() {
+            this.set('stateProps', _.extend({}, this.stateProps, {
+                loading:    true,
+                data:       null
+            }));
+
+            this.loadData();
+        },
+
+        edit: function() {
+            this.set('stateProps', _.extend({}, this.stateProps, {
+                name:       this.get('name'),
+                editing:    true
+            }));
+        },
+
+        save: function() {
+            this.sendAction('save', this.get('stateProps.name'));
+
+            this.set('stateProps', _.extend({}, this.stateProps, {
+                name:       null,
+                editing:    false
+            }));
         }
     }
 });

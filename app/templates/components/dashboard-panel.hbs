@@ -1,8 +1,18 @@
 <h2>{{dashboardId}} - {{name}}</h2>
-<strong>Is loading: {{stateProps.loading}}</strong>
+
+{{#if stateProps.editing}}
+    {{input type="text" value=stateProps.name}}
+    <button {{action "save"}}>Save</button>
+{{else}}
+    <button {{action "edit"}}>Edit</button>
+{{/if}}
 
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a tortor ut mi tincidunt euismod ut id augue. Quisque posuere diam scelerisque mi tincidunt aliquet.</p>
 
-{{#unless stateProps.loading}}
-    {{dashboard-data-panel data=stateProps.data}}
-{{/unless}}
+{{#if stateProps.loading}}
+    <strong>Loading...</strong>
+{{else}}
+    {{dashboard-data-panel
+        data=stateProps.data
+        reload="dataReload"}}
+{{/if}}
