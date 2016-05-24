@@ -1,6 +1,12 @@
-SampleApp.Router.map( function() {
+require('scripts/routes/dashboards');
+
+SampleApp.Router.map(function() {
+    this.route('dashboards', { path: 'dashboards' });
+
     //
-    // Fallback in case no other routes match the URL
+    // Template file location: [foo/bar.hbs]
+    // Route        : SampleApp.FooBarRoute = Ember.Route.extend()
+    // Controller   : SampleApp.FooBarController = Ember.ObjectController.extend()
+    // View         : SampleApp.FooBarView = Ember.View.extend()
     //
-    this.route('notFound', { path: '*path'});
 });
