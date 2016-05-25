@@ -4,37 +4,49 @@ require('scripts/views/dashboards');
 require('scripts/routes/dashboards/dashboard');
 require('scripts/controllers/dashboards/dashboard');
 
+var dashboards = [
+    {
+        id: 1,
+        name: 'Davide'
+    },
+    {
+        id: 2,
+        name: 'Claudio'
+    },
+    {
+        id: 3,
+        name: 'Andrea'
+    },
+    {
+        id: 4,
+        name: 'Dragan'
+    },
+    {
+        id: 5,
+        name: 'Fez'
+    },
+];
+
 SampleApp.DashboardsRoute = Ember.Route.extend({
     model: function() {
         console.log('Loading model...');
 
-        return new Ember.RSVP.Promise(function(resolve, reject) {
-            Ember.run.later(function() {
+        var model = {
+            state:      'loading',
+            dashboards: null
+        };
+
+        loadDashboards()
+            .then(function(dashboards) {
                 console.log('Resolve promise');
-                resolve([
-                    {
-                        id: 1,
-                        name: 'Davide'
-                    },
-                    {
-                        id: 2,
-                        name: 'Claudio'
-                    },
-                    {
-                        id: 3,
-                        name: 'Andrea'
-                    },
-                    {
-                        id: 4,
-                        name: 'Dragan'
-                    },
-                    {
-                        id: 5,
-                        name: 'Fez'
-                    },
-                ]);
-            }, 1000);
-        });
+
+                Ember.run(function() {
+                    Ember.set(model, 'state', 'loaded');
+                    Ember.set(model, 'dashboards', dashboards);
+                });
+            });
+
+        return model;
     },
 
     afterModel: function(model) {
@@ -42,6 +54,14 @@ SampleApp.DashboardsRoute = Ember.Route.extend({
     }
 });
 
+
+function loadDashboards() {
+    return new Ember.RSVP.Promise(function(resolve, reject) {
+        setTimeout(function() {
+            resolve(dashboards);
+        }, 1000);
+    });
+}
 
 
 function foo() {

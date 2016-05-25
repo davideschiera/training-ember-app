@@ -1,9 +1,13 @@
 <h2>Dashboards</h2>
 
-<ol>
-    {{#each dashboard in dashboards}}
-        <li>
-            {{#link-to "dashboards.dashboard" dashboard.id}}{{dashboard.id}} - {{dashboard.name}}{{/link-to}}
-        </li>
-    {{/each}}
-</ol>
+{{#if isLoading}}
+    <strong>Hold on...</strong>
+{{else}}
+    <ol>
+        {{#each dashboard in dashboards}}
+            <li>
+                {{#link-to "dashboards.dashboard" dashboard.id}}{{dashboard.id}} - {{dashboard.name}}{{/link-to}}
+            </li>
+        {{/each}}
+    </ol>
+{{/if}}
