@@ -33,7 +33,7 @@
         });
     });
 
-    TestBuddy.onlyTest('Reload', function() {
+    TestBuddy.test('Reload', function() {
         expect(1);
 
         var reloaded = false;

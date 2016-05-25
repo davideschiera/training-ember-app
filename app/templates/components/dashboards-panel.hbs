@@ -1,8 +1,9 @@
 <h2>Dashboards</h2>
 
 <ol>
-    <li>{{#link-to "dashboards.dashboard" "1"}}1 - Davide{{/link-to}}</li>
-    <li>{{#link-to "dashboards.dashboard" "2"}}2 - Andrea{{/link-to}}</li>
-    <li>{{#link-to "dashboards.dashboard" "3"}}3 - Claudio{{/link-to}}</li>
-    <li>{{#link-to "dashboards.dashboard" "4"}}4 - Dragan{{/link-to}}</li>
+    {{#each dashboard in dashboards}}
+        <li>
+            {{#link-to "dashboards.dashboard" dashboard.id}}{{dashboard.id}} - {{dashboard.name}}{{/link-to}}
+        </li>
+    {{/each}}
 </ol>

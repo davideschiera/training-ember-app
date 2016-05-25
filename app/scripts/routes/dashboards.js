@@ -5,8 +5,40 @@ require('scripts/routes/dashboards/dashboard');
 require('scripts/controllers/dashboards/dashboard');
 
 SampleApp.DashboardsRoute = Ember.Route.extend({
-    setupController: function() {
-        foo();
+    model: function() {
+        console.log('Loading model...');
+
+        return new Ember.RSVP.Promise(function(resolve, reject) {
+            Ember.run.later(function() {
+                console.log('Resolve promise');
+                resolve([
+                    {
+                        id: 1,
+                        name: 'Davide'
+                    },
+                    {
+                        id: 2,
+                        name: 'Claudio'
+                    },
+                    {
+                        id: 3,
+                        name: 'Andrea'
+                    },
+                    {
+                        id: 4,
+                        name: 'Dragan'
+                    },
+                    {
+                        id: 5,
+                        name: 'Fez'
+                    },
+                ]);
+            }, 1000);
+        });
+    },
+
+    afterModel: function(model) {
+        console.log('Model loaded!', model);
     }
 });
 
