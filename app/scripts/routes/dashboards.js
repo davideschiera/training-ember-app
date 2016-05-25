@@ -33,7 +33,8 @@ SampleApp.DashboardsRoute = Ember.Route.extend({
 
         var model = {
             state:      'loading',
-            dashboards: null
+            dashboards: null,
+            message:    null
         };
 
         loadDashboards()
@@ -43,6 +44,11 @@ SampleApp.DashboardsRoute = Ember.Route.extend({
                 Ember.run(function() {
                     Ember.set(model, 'state', 'loaded');
                     Ember.set(model, 'dashboards', dashboards);
+                });
+            }, function(error) {
+                Ember.run(function() {
+                    Ember.set(model, 'state', 'failed');
+                    Ember.set(model, 'message', error.message);
                 });
             });
 
@@ -57,9 +63,23 @@ SampleApp.DashboardsRoute = Ember.Route.extend({
 
 function loadDashboards() {
     return new Ember.RSVP.Promise(function(resolve, reject) {
-        setTimeout(function() {
-            resolve(dashboards);
-        }, 1000);
+        $.ajax({ type: 'GET', url: '/ui/dashboards' })
+            .done(function(data, state, jqXHR ) {
+                var dashboards = data.dashboards.map(function(dashboard) {
+                    return {
+                        id: dashboard.id,
+                        name: dashboard.name
+                    };
+                });
+
+                resolve(dashboards);
+            })
+            .fail(function(data, error, status) {
+                reject({
+                    status:     status,
+                    message:    data.responseJSON.errors[0].message
+                });
+            });
     });
 }
 

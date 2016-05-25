@@ -2,7 +2,13 @@
 
 {{#if isLoading}}
     <strong>Hold on...</strong>
-{{else}}
+{{/if}}
+
+{{#if hasFailed}}
+    <strong>Failed! {{message}}</strong>
+{{/if}}
+
+{{#if hasData}}
     <ol>
         {{#each dashboard in dashboards}}
             <li>

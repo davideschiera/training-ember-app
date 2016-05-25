@@ -2,13 +2,46 @@
 
     module('[Sample]', {
         setup: function() {
+            getUiDashboardsId = $.mockjax({
+                url:            '/ui/dashboards',
+                responseTime:   10,
+                responseText:   {
+                                    dashboards: dashboards
+                                }
+            });
+
             Ember.run(function() {
                 SampleApp.reset();
             });
         },
         teardown: function() {
+            $.mockjax.clear();
         }
     });
+
+    var getUiDashboardsId;
+    var dashboards = [
+        {
+            id: 1,
+            name: 'Davide'
+        },
+        {
+            id: 2,
+            name: 'Claudio'
+        },
+        {
+            id: 3,
+            name: 'Andrea'
+        },
+        {
+            id: 4,
+            name: 'Dragan'
+        },
+        {
+            id: 5,
+            name: 'Fez'
+        },
+    ];
 
     TestBuddy.test('Open dashboards', function() {
         expect(1);
@@ -42,6 +75,40 @@
 
         andThen(function() {
             strictEqual($('h2:eq(1)').text(), '1 - Custom Name');
+        });
+    });
+
+    TestBuddy.test('Load dashboards', function() {
+        expect(1);
+
+        visit('/dashboards');
+
+        andThen(function() {
+            strictEqual($('ol').length, 1, 'Expected list');
+        });
+    });
+
+    TestBuddy.test('Failed loading dashboards', function() {
+        expect(1);
+
+        $.mockjax.clear(getUiDashboardsId);
+        $.mockjax({
+            url:            '/ui/dashboards',
+            responseTime:   10,
+            status:         404,
+            statusText:     'Not Found',
+            responseText:   {
+                              "errors" : [ {
+                                "reason" : "Not found",
+                                "message" : "Unknown UI setting: 'dashbo'."
+                              } ]
+                            }
+        });
+
+        visit('/dashboards');
+
+        andThen(function() {
+            strictEqual($('strong').text(), 'Failed! Unknown UI setting: \'dashbo\'.', 'expected error');
         });
     });
 
