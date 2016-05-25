@@ -5,5 +5,78 @@ require('scripts/routes/dashboards/dashboard');
 require('scripts/controllers/dashboards/dashboard');
 
 SampleApp.DashboardsRoute = Ember.Route.extend({
-    
+    setupController: function() {
+        foo();
+    }
 });
+
+
+
+function foo() {
+    function call1() {
+        console.log('calling call1');
+
+        var promise = new Ember.RSVP.Promise(function(resolve, reject) {
+            console.log('executing call1');
+
+            setTimeout(function() {
+                console.log('completed call1');
+
+                resolve({ value: 1});
+            }, 1000);
+        });
+
+        console.log('called call1');
+
+        return promise;
+    }
+    function call2() {
+        console.log('call2');
+
+        return new Ember.RSVP.Promise(function(resolve, reject) {
+            setTimeout(function() {
+                console.log('completed call2');
+
+                reject({ value: 2});
+            }, 500);
+        });
+    }
+    function call3() {
+        console.log('call3');
+
+        return new Ember.RSVP.Promise(function(resolve, reject) {
+            setTimeout(function() {
+                console.log('completed call3');
+
+                resolve({ value: 3});
+            }, 1500);
+        });
+    }
+
+    // return call1()
+    //     .then(function() {
+    //         return call2();
+    //     })
+    //     .then(function() {
+    //         return call3();
+    //     })
+    //     .then(function(result) {
+    //         console.log('everybody happy ' + result.value);
+    //     });
+
+    // return Ember.RSVP.Promise.all([call1(), call2(), call3()])
+    //     .then(function(results) {
+    //         console.log('everybody happier ' + results.map(function(result) { return result.value; }));
+    //     }, function(error) {
+    //         console.log('everybody sad ' + error.value);
+    //     });
+
+    return Ember.RSVP.allSettled([call1(), call2(), call3()])
+        .then(function(results) {
+            if (results.filter(function(result) { return result.state === 'rejected'; }).length === 0) {
+                console.log('everybody happy ', results);
+            } else {
+                console.log('somebody sad ', results);
+            }
+        });
+}
