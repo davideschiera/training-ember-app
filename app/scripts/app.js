@@ -7,6 +7,9 @@ SampleApp = Ember.Application.create({
 
 SampleApp.DS = Ember.Namespace.create();
 
+require('scripts/models/*');
+require('scripts/adapters/*');
+require('scripts/serializers/*');
 require('scripts/components/*');
 
 require('scripts/routes/init');

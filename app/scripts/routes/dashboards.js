@@ -37,20 +37,29 @@ SampleApp.DashboardsRoute = Ember.Route.extend({
             message:    null
         };
 
-        loadDashboards()
+        this.store.find('dashboard')
             .then(function(dashboards) {
-                console.log('Resolve promise');
-
-                Ember.run(function() {
-                    Ember.set(model, 'state', 'loaded');
-                    Ember.set(model, 'dashboards', dashboards);
-                });
+                Ember.set(model, 'state', 'loaded');
+                Ember.set(model, 'dashboards', dashboards);
             }, function(error) {
-                Ember.run(function() {
-                    Ember.set(model, 'state', 'failed');
-                    Ember.set(model, 'message', error.message);
-                });
+                Ember.set(model, 'state', 'failed');
+                Ember.set(model, 'message', error.message);
             });
+
+        // loadDashboards()
+        //     .then(function(dashboards) {
+        //         console.log('Resolve promise');
+
+        //         Ember.run(function() {
+        //             Ember.set(model, 'state', 'loaded');
+        //             Ember.set(model, 'dashboards', dashboards);
+        //         });
+        //     }, function(error) {
+        //         Ember.run(function() {
+        //             Ember.set(model, 'state', 'failed');
+        //             Ember.set(model, 'message', error.message);
+        //         });
+        //     });
 
         return model;
     },
@@ -66,10 +75,10 @@ function loadDashboards() {
         $.ajax({ type: 'GET', url: '/ui/dashboards' })
             .done(function(data, state, jqXHR ) {
                 var dashboards = data.dashboards.map(function(dashboard) {
-                    return {
+                    return Ember.Object.create({
                         id: dashboard.id,
                         name: dashboard.name
-                    };
+                    });
                 });
 
                 resolve(dashboards);

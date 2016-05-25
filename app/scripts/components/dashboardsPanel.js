@@ -3,5 +3,7 @@ SampleApp.DashboardsPanelComponent = Ember.Component.extend({
 
     hasFailed: Ember.computed.equal('loadingState', 'failed'),
 
-    hasData: Ember.computed.equal('loadingState', 'loaded'),
+    hasData: Ember.computed('loadingState', function() {
+        return this.get('loadingState') === 'loaded';
+    })
 });
