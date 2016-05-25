@@ -71,6 +71,11 @@ function foo() {
     //         console.log('everybody sad ' + error.value);
     //     });
 
+    // return call1()
+    //     .then(function() { console.log('suceeded!'); })
+    //     .catch(function() { console.log('failed'); })
+    //     .finally(function() { console.log('whatever'); });
+
     return Ember.RSVP.allSettled([call1(), call2(), call3()])
         .then(function(results) {
             if (results.filter(function(result) { return result.state === 'rejected'; }).length === 0) {
