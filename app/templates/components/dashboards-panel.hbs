@@ -1,17 +1,17 @@
 <h2>Dashboards</h2>
 
 {{#if isLoading}}
-    <strong>Hold on...</strong>
+    <strong data-output="state">Hold on...</strong>
 {{/if}}
 
 {{#if hasFailed}}
-    <strong>Failed! {{message}}</strong>
+    <strong data-output="error">Failed! {{message}}</strong>
 {{/if}}
 
 {{#if hasData}}
-    <ol>
+    <ol data-context="dashboards">
         {{#each dashboard in dashboards}}
-            <li>
+            <li data-action="dashboard-link">
                 {{#link-to "dashboards.dashboard" dashboard.id}}{{dashboard.id}} - {{dashboard.name}}{{/link-to}}
             </li>
         {{/each}}

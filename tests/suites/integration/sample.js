@@ -78,13 +78,13 @@
         });
     });
 
-    TestBuddy.test('Load dashboards', function() {
+    TestBuddy.onlyTest('Load dashboards', function() {
         expect(1);
 
         visit('/dashboards');
 
         andThen(function() {
-            strictEqual($('ol').length, 1, 'Expected list');
+            strictEqual($('[data-context="dashboards"]').length, 1, 'Expected list');
         });
     });
 
@@ -108,7 +108,7 @@
         visit('/dashboards');
 
         andThen(function() {
-            strictEqual($('strong').text(), 'Failed! Unknown UI setting: \'dashbo\'.', 'expected error');
+            strictEqual($('[data-output="error"]').text(), 'Failed! Unknown UI setting: \'dashbo\'.', 'expected error');
         });
     });
 
